@@ -6,6 +6,8 @@ import Header from './components/Header'
 import Countdown from './components/Countdown'
 import Invitation from './components/Invitation'
 import Gallery from './components/Gallery'
+import Guestbook from './components/Guestbook'
+import AccountInfo from './components/AccountInfo'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -16,6 +18,9 @@ function App() {
       <Countdown/>
       <Invitation/>
       <Gallery/>
+      <Guestbook/>
+      <AccountInfo/>
+    
     </div>
   )
 }
