@@ -15,8 +15,8 @@ function App() {
   return (
     <div>
       <Header/>
-      <Countdown/>
       <Invitation/>
+      <Countdown/>
       <Gallery/>
       <Guestbook/>
       <AccountInfo/>

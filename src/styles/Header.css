@@ -1,0 +1,55 @@
+
+  
+  .header-content {
+    margin-bottom: 10px;
+  }
+
+  #root {
+    margin-top: -18px;
+  }
+  
+  .date-line {
+    font-size: 20px;
+    letter-spacing: 4px;
+    margin-bottom: -20px;
+  }
+  
+  .day {
+    font-size: 30px;
+    letter-spacing: 8px;
+    font-weight: bold;
+  }
+  
+  .datetime {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 32px;
+    margin-top: -25px;
+  }
+  
+  .header-image img {
+    width: 119%;
+    max-width: 500px;
+    height: auto;
+    display: block;
+    margin-left: -32px;
+    margin-top: 30px;
+  }
+
+  .header-footer {
+    margin-top: 10px;
+  }
+
+  .name {
+    margin-top: 23px;
+    font-size: 22px;
+    color: #222;
+    font-weight: 200;
+  }
+
+  .holl {
+    margin-top: -7px;
+    font-size: 16px;
+    color: #222;
+  }
+  
