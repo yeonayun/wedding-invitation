@@ -1,0 +1,58 @@
+.account-info {
+    text-align: center;
+    margin: 30px auto;
+    max-width: 400px;
+    font-family: 'Pretendard', sans-serif;
+  }
+  
+  .account-title {
+    font-size: 22px;
+    margin-bottom: 20px;
+    font-weight: normal;
+  }
+  
+  .account-line {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    /* background-color: #f2f2f2; */
+    border-radius: 6px;
+    padding: 6px 12px;
+    margin: 8px auto;
+    font-size: 14px;
+    gap: 8px;
+  }
+  
+  .account-label {
+    background-color: #c8c8c8;
+    color: #333;
+    padding: 4px 6px;
+    border-radius: 4px;
+    font-weight: 500;
+    white-space: nowrap;
+    margin-left: -10px;
+  }
+  
+  .account-text {
+    flex: 1;
+    text-align: left;
+    white-space: nowrap;
+    margin-left: 10px;
+    font-size: 16px;
+  }
+  
+  .copy-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    margin-top: -5px;
+    margin-left: -10px;
+  }
+  
+  .copied-message {
+    font-size: 12px;
+    color: black;
+    margin: 4px 0 12px;
+  }
+  

@@ -1,71 +1,55 @@
-import { useState } from "react"
-import useCopyClipboard from '../hooks/useCopyClipboard'
+import useCopyClipboard from '../hooks/useCopyClipboard';
+import '../styles/AccountInfo.css';
 
-function AccountInfo(){
+function AccountInfo() {
+  const groomCopy = useCopyClipboard();
+  const brideCopy = useCopyClipboard();
 
-    const groomCopy = useCopyClipboard();
-    const brideCopy = useCopyClipboard();
+  const groomAccount = {
+    name: "전영호",
+    bank: "카카오뱅크",
+    number: "7777020333613"
+  };
 
-    const groomAccount={
-        name: "연아윤",
-        bank: "카카오뱅크",
-        number: "7777019925749"
-    }
+  const brideAccount = {
+    name: "연아윤",
+    bank: "카카오뱅크",
+    number: "7777019925749"
+  };
 
-    const brideAccount={
-        name: "전영호",
-        bank: "카카오뱅크",
-        number: "7777019925749"
-    }
+  return (
+    <section className="account-info">
+      <h2 className="account-title">마음을 전하는 곳</h2>
 
-    // const [copiedName, setCopiedName] = useState('')
-    // const [copied, setCopied] = useState(false)
+      <div className="account-line">
+        <span className="account-label">신랑측 계좌번호</span>
+        <span className="account-text">
+          {groomAccount.name} {groomAccount.bank} {groomAccount.number}
+        </span>
+        <button
+          className="copy-button"
+          onClick={() => groomCopy.copy(`${groomAccount.number}`)}
+        >
+          📋
+        </button>
+      </div>
+      {groomCopy.copied && <p className="copied-message">계좌번호가 복사되었습니다.</p>}
 
-    // const copyToClipboard = (text) => {
-    //     navigator.clipboard.writeText(text)
-    //     .then(()=>{
-    //         setCopiedName(who)
-    //         setCopied(true)
-
-    //         setTimeout(()=>{
-    //             setCopied(false)
-    //         }, 2000)
-    //     })
-    //     .catch(()=>{
-    //         alert('복사에 실패했습니다.')
-    //     })
-    // }
-
-    return(
-        <section>
-            <h2>마음 전하실 곳</h2>
-            <div style={{border: '1px solid #ccc',
-                        padding:'10px',
-                        marginBottom:'10px' }}>
-            <p><strong>신랑 {brideAccount.name}</strong></p>
-            <p>{groomAccount.bank} {groomAccount.number}</p>
-            <button onClick={()=>brideCopy.copy(brideAccount.number)}>
-                복사하기
-            </button>
-            {brideCopy.copied &&(
-                <p style={{color: 'black'}}>계좌번호가 복사되었습니다.</p>
-            )}
-            </div>
-
-            <div style={{border: '1px solid #ccc',
-                        padding:'10px',
-                        marginBottom:'10px' }}>
-            <p><strong>신부 {groomAccount.name}</strong></p>
-            <p>{groomAccount.bank} {groomAccount.number}</p>
-            <button onClick={()=>groomCopy.copy(groomAccount.number)}>
-                복사하기
-            </button>
-
-            {groomCopy.copied &&(
-                <p style={{color: 'black'}}>계좌번호가 복사되었습니다.</p>
-            )}
-            </div>
-        </section>
-    )
+      <div className="account-line">
+        <span className="account-label">신부측 계좌번호</span>
+        <span className="account-text">
+          {brideAccount.name} {brideAccount.bank} {brideAccount.number}
+        </span>
+        <button
+          className="copy-button"
+          onClick={() => brideCopy.copy(`${brideAccount.number}`)}
+        >
+          📋
+        </button>
+      </div>
+      {brideCopy.copied && <p className="copied-message">계좌번호가 복사되었습니다.</p>}
+    </section>
+  );
 }
-export default AccountInfo
+
+export default AccountInfo;

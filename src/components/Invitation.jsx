@@ -28,13 +28,13 @@ function Invitation() {
 
   const groom = {
     name: '전영호',
-    phone: '010-1234-5678',
+    phone: '010-3943-0463',
     kakao: 'https://open.kakao.com/o/groom-link'
   }
 
   const bride = {
     name: '연아윤',
-    phone: '010-9876-5432',
+    phone: '010-4694-3920',
     kakao: 'https://open.kakao.com/o/bride-link'
   }
 

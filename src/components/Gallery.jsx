@@ -1,25 +1,43 @@
-function Gallery(){
-    const images=[
-        "/image2.jpg",
+function Gallery() {
+    const images = [
         "/image1.jpg",
-        "/image4.jpg"
-    ]
+        "/image2.jpg",
+        "/image3.jpg",
+        "/image4.jpg",
+        "/image1.jpg",
+        "/image6.jpg",
+        "/image7.jpg",
+        "/image8.jpg",
+        "/image9.jpg"
+    ];
 
-    return(
-        <div>
-            <h2>ALBUM</h2>
-            <div style={{display: 'flex', gap: '15px', flexWrap:'wrap'}}>
-                {images.map((src, index)=>(
+    return (
+        <div style={{ padding: '10px' }}>
+            <h2 style={{ textAlign: 'center', marginBottom: '20px' }}>ALBUM</h2>
+            <div style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(3, 1fr)',
+                gap: '15px',
+                justifyItems: 'center'
+            }}>
+                {images.map((src, index) => (
                     <img
-                    key={index}
-                    //Key 중요 -> 리액트는 뭐가 변경되었는지 수정해야됨 근데 얘가 효율적으로 가능하게해 
-                    //리액트가 변경사항을 알아차리기 쉽게 하기 위해서 Key 사용
-                    src={src}
-                    alt={`기념사진&{index+1}`}
-                    width="150"
+                        key={index}
+                        src={src}
+                        alt={`기념사진${index + 1}`}
+                        style={{
+                            width: '105%',
+                            maxWidth: '400px',
+                            height: '130px',
+                            objectFit: 'cover',
+                            borderRadius: '10px',
+                            boxShadow: '0 2px 6px rgba(0,0,0,0.2)'
+                        }}
                     />
                 ))}
             </div>
         </div>
-    )
-} export default Gallery
+    );
+}
+
+export default Gallery;
