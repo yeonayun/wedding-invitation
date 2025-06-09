@@ -29,11 +29,11 @@
   }
   
   .header-image img {
-    width: 106%;
-    max-width: 500px;
+    width: 98%;
+    /* max-width: 500px; */
     height: auto;
     display: block;
-    margin-left: -32px;
+    /* margin-left: -32px; */
     margin-top: 30px;
   }
 
