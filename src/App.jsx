@@ -8,6 +8,7 @@ import Invitation from './components/Invitation'
 import Gallery from './components/Gallery'
 import Guestbook from './components/Guestbook'
 import AccountInfo from './components/AccountInfo'
+import GuestCheck from './components/GuestCheck'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -20,7 +21,7 @@ function App() {
       <Gallery/>
       <Guestbook/>
       <AccountInfo/>
-    
+      <GuestCheck/>
     </div>
   )
 }
