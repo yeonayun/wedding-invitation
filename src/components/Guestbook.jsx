@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import '../styles/Guestbook.css';
 
 function Guestbook() {
@@ -11,30 +11,60 @@ function Guestbook() {
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
 
+  // ✅ 서버에서 방명록 불러오기
+  useEffect(() => {
+    fetch('http://localhost:4000/guestbook')
+      .then((res) => res.json())
+      .then((data) => setEntries(data))
+      .catch((err) => console.error('불러오기 실패:', err));
+  }, []);
+
+  // ✅ 방명록 작성
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!name.trim() || !message.trim()) return;
 
-    const now = new Date();
-    const date = `${now.getFullYear().toString().slice(2)}-${(now.getMonth() + 1).toString().padStart(2, '0')}-${now.getDate().toString().padStart(2, '0')} ${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}:${now.getSeconds().toString().padStart(2, '0')}`;
+    const entry = { name, password, message };
 
-    setEntries([{ name, password, message, date }, ...entries]);
-    setName('');
-    setPassword('');
-    setMessage('');
-    setShowModal(false);
+    fetch('http://localhost:4000/guestbook', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(entry),
+    })
+      .then((res) => res.json())
+      .then((newEntry) => {
+        setEntries([newEntry, ...entries]);
+        setName('');
+        setPassword('');
+        setMessage('');
+        setShowModal(false);
+      })
+      .catch((err) => console.error('작성 실패:', err));
   };
 
+  // ✅ 방명록 삭제
   const handleDelete = () => {
-    if (deletePassword === entries[deleteIndex].password) {
-      const updated = [...entries];
-      updated.splice(deleteIndex, 1);
-      setEntries(updated);
-      setDeleteIndex(null);
-      setDeletePassword('');
-    } else {
-      alert('비밀번호가 틀렸습니다.');
-    }
+    fetch(`http://localhost:4000/guestbook/${deleteIndex}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ password: deletePassword }),
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error('삭제 실패');
+        const updated = [...entries];
+        updated.splice(deleteIndex, 1);
+        setEntries(updated);
+        setDeleteIndex(null);
+        setDeletePassword('');
+      })
+      .catch((err) => {
+        alert('비밀번호가 틀렸습니다.');
+        console.error(err);
+      });
   };
 
   return (

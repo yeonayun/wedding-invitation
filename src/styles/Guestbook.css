@@ -113,7 +113,12 @@
   border-bottom: 1px solid #ccc;
   outline: none;
   resize: none;
+  font-family: 'Pretendard', sans-serif; /* 성함 입력 스타일 통일 */
+  font-weight: 400;                    /* 성함 입력 스타일 통일 */
+  color: #000;                        /* 필요하면 글자색도 맞춰줌 */
+  background-color: transparent;      /* 깔끔한 배경 유지 */
 }
+
 
 .submit-button {
   background-color: #4a4a4a;
