@@ -12,7 +12,7 @@ function Gallery() {
     ];
 
     return (
-        <div style={{ padding: '10px' }}>
+        <div>
             <h2 style={{ textAlign: 'center', marginBottom: '20px' }}>ALBUM</h2>
             <div style={{
                 display: 'grid',

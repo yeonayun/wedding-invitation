@@ -2,6 +2,7 @@
   
   .header-content {
     margin-bottom: 10px;
+    margin-top: 50px;
   }
 
   #root {
@@ -28,7 +29,7 @@
   }
   
   .header-image img {
-    width: 119%;
+    width: 106%;
     max-width: 500px;
     height: auto;
     display: block;

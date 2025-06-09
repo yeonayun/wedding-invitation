@@ -1,5 +1,5 @@
 .invitation-card {
-    padding: 30px 20px;
+
     text-align: center;
     font-family: 'Noto Serif KR', serif;
     margin-top: -13px;
@@ -50,7 +50,6 @@
   .calendar {
     margin-top: 40px;
     /* background-color: #f3f3f3; */
-    padding: 20px;
     border-radius: 12px;
   }
   
