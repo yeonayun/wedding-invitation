@@ -15,7 +15,9 @@ function Countdown(){
     return(
         <div>
             {/* <h2>연아윤 ♡ 전영호 님의 결혼식</h2> */}
-            <p>연아윤 ♡ 전영호 님의 결혼식 {dayLeft}일전</p>
+            <p style={{ marginTop: '30px' }}>
+            연아윤 ♡ 전영호 님의 결혼식 {dayLeft}일 전
+            </p>
         </div>
     )
 } export default Countdown

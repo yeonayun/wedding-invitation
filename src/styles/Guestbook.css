@@ -1,77 +1,156 @@
 .guestbook {
-    width: 300px;
-    margin: auto;
-    padding: 20px;
-    background-color: #f7f7f7;
-  }
-  
-  .guestbook-title {
-    text-align: center;
-    font-size: 18px;
-    margin-bottom: 15px;
-  }
-  
-  .guestbook-form input,
-  .guestbook-form textarea {
-    width: 100%;
-    margin-bottom: 8px;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 14px;
-  }
-  
-  .submit-button {
-    background-color: #e0e0e0;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    margin: auto;
-  }
-  
-  .entries {
-    margin-top: 20px;
-  }
-  
-  .entry-card {
-    background-color: #e7e7e7;
-    padding: 12px;
-    margin-bottom: 12px;
-    border-radius: 10px;
-    position: relative;
-  }
-  
-  .entry-from {
-    font-weight: bold;
-    font-size: 14px;
-    margin-bottom: 6px;
-  }
-  
-  .entry-message {
-    font-size: 13px;
-    margin-bottom: 10px;
-    color: #333;
-  }
-  
-  .entry-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 12px;
-    color: #666;
-  }
-  
-  .delete-button {
-    background: none;
-    border: none;
-    color: #666;
-    font-size: 14px;
-    cursor: pointer;
-  }
-  
-  
+  width: 320px;
+  margin: auto;
+  padding: 20px;
+}
+
+.guestbook-title {
+  font-family: 'Pretendard', sans-serif;
+  text-align: center;
+  font-size: 22px;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.show-form-button {
+  font-family: 'Pretendard', sans-serif;
+  background-color: #e0e0e0;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin: auto;
+}
+
+.form-box {
+  background-color: #ebebeb;
+  padding: 12px;
+  border-radius: 10px;
+  position: relative;
+}
+
+.form-header {
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: text;
+  margin-left: -10px;
+  margin-top: 10px;
+}
+
+.inline-input {
+  font-family: 'Pretendard', sans-serif;
+  font-size: 14px;
+  border: none;
+  background: transparent;
+  outline: none;
+  width: auto;
+  padding: 0 4px;
+  margin-left: 6px;
+  color: #000;
+}
+
+textarea {
+  width: 89%;
+  border: 1px solid transparent;
+  outline: transparent;
+  background-color: transparent;
+  resize: none;
+  font-size: 14px;
+  height: 60px;
+  margin-top: 4px;
+  font-family: 'Pretendard', sans-serif;
+  /* margin-left: 15px; */
+}
+
+.form-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  font-size: 18px;
+  color: #666;
+  cursor: pointer;
+}
+
+.submit-button {
+  background-color: #606060;
+  color: #fff;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  outline: none; 
+  margin-left: 242px;
+}
+
+.submit-button:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+
+.entries {
+  margin-top: 20px;
+}
+
+.entry-card {
+  background-color: #ebebeb; /* form-box와 동일하게 */
+  padding: 12px;
+  margin-bottom: 12px;
+  border-radius: 10px;
+  font-family: 'Pretendard', sans-serif;
+  position: relative; /* 삭제 버튼 위치용 */
+}
+
+
+.entry-from {
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 6px;
+  font-family: 'Pretendard', sans-serif;
+}
+
+.entry-message {
+  font-size: 13px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.entry-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: #666;
+}
+
+/* .delete-button {
+  background: none;
+  border: none;
+  color: #666;
+  font-size: 14px;
+  cursor: pointer;
+} */
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 18px;
+  color: #666;
+  cursor: pointer;
+}
