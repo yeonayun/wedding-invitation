@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import '../styles/Guestbook.css';
 
 function Guestbook() {
@@ -11,80 +11,39 @@ function Guestbook() {
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
 
-  // 서버에서 방명록 목록 불러오기
-  useEffect(() => {
-    async function fetchEntries() {
-      try {
-        const res = await fetch('http://localhost:5000/entries');
-        const data = await res.json();
-        setEntries(data);
-      } catch {
-        alert('서버 연결 실패');
-      }
-    }
-    fetchEntries();
-  }, []);
+  // 작성
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!name.trim() || !message.trim()) return;
 
-  // 새 방명록 작성
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  if (!name.trim() || !message.trim()) return;
+    const newEntry = {
+      name,
+      password,
+      message,
+      date: new Date().toLocaleDateString(),
+    };
 
-  try {
-    const now = new Date();
-    const date = `${now.getFullYear().toString().slice(2)}-${(now.getMonth()+1).toString().padStart(2,'0')}-${now.getDate().toString().padStart(2,'0')} ${now.getHours().toString().padStart(2,'0')}:${now.getMinutes().toString().padStart(2,'0')}:${now.getSeconds().toString().padStart(2,'0')}`;
+    setEntries([newEntry, ...entries]);
+    setName('');
+    setPassword('');
+    setMessage('');
+    setShowModal(false);
+  };
 
-    const newEntry = { name, password, message, date };
-
-    const res = await fetch('http://localhost:5000/entries', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(newEntry),
-    });
-
-    const data = await res.json();
-
-    if (data.success) {
-      // ✅ 서버 성공 후 바로 state에 추가
-      setEntries((prev) => [newEntry, ...prev]);
-
-      // 입력값 초기화 및 모달 닫기
-      setName('');
-      setPassword('');
-      setMessage('');
-      setShowModal(false);
-    } else {
-      alert(data.error || '오류가 발생했습니다.');
-    }
-  } catch (error) {
-    alert('서버 연결 실패');
-  }
-};
-
-  // 방명록 삭제
-  const handleDelete = async () => {
+  // 삭제
+  const handleDelete = () => {
     if (deleteIndex === null) return;
 
-    try {
-      const res = await fetch(`http://localhost:5000/entries/${deleteIndex}`, {
-        method: 'DELETE',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ password: deletePassword }),
-      });
-      const data = await res.json();
-      if (data.success) {
-        // 삭제 성공 시 최신 데이터 다시 불러오기
-        const res2 = await fetch('http://localhost:5000/entries');
-        const updatedEntries = await res2.json();
-        setEntries(updatedEntries);
+    const entryToDelete = entries[deleteIndex];
 
-        setDeleteIndex(null);
-        setDeletePassword('');
-      } else {
-        alert(data.error || '삭제 실패');
-      }
-    } catch (error) {
-      alert('서버 연결 실패');
+    if (entryToDelete.password === deletePassword) {
+      const newEntries = [...entries];
+      newEntries.splice(deleteIndex, 1);
+      setEntries(newEntries);
+      setDeleteIndex(null);
+      setDeletePassword('');
+    } else {
+      alert('비밀번호가 일치하지 않습니다.');
     }
   };
 
@@ -131,7 +90,7 @@ const handleSubmit = async (e) => {
                 maxLength="10"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder="방명록 삭제를 위한 비밀번호 입력(최대 10자리)"
+                placeholder="방명록 삭제용 비밀번호 (최대 10자)"
                 required
               />
 

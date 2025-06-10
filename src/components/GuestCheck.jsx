@@ -3,9 +3,9 @@ import Modal from './Modal';
 import '../styles/GuestCheck.css';
 
 const GuestCheck = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);      // 1차 모달
-  const [isConfirmOpen, setIsConfirmOpen] = useState(false);  // 2차 모달
-  const [isSubmitted, setIsSubmitted] = useState(false);      // 제출 메시지
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isConfirmOpen, setIsConfirmOpen] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const [attendance, setAttendance] = useState('');
   const [side, setSide] = useState('');
@@ -24,19 +24,38 @@ const GuestCheck = () => {
     setIsConfirmOpen(true);
   };
 
-  const handleFinalSubmit = () => {
+  const handleFinalSubmit = async () => {
     if (!agree) {
       alert('개인정보 수집 및 이용에 동의해주세요.');
       return;
     }
 
-    console.log({ attendance, side, name, phone, guests, message });
+    const data = {
+      name: `${name} (${side}, ${attendance}, 외 ${guests}명)`,
+      password: 'wedding',
+      message: message || `${attendance} - 추가 정보 없음`,
+    };
 
-    setIsConfirmOpen(false);
-    setIsModalOpen(false);
-    setIsSubmitted(true);
+    try {
+      const res = await fetch('http://localhost:5000/entries', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
 
-    setTimeout(() => setIsSubmitted(false), 3000);
+      if (!res.ok) {
+        const result = await res.json();
+        alert(result.error || '제출 중 오류가 발생했습니다.');
+        return;
+      }
+
+      setIsConfirmOpen(false);
+      setIsModalOpen(false);
+      setIsSubmitted(true);
+      setTimeout(() => setIsSubmitted(false), 3000);
+    } catch (error) {
+      alert('서버 연결 오류입니다.');
+    }
   };
 
   return (
