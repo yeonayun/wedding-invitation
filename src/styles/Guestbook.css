@@ -7,6 +7,12 @@
   text-align: center;
 }
 
+.guestbook-header {
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+
 .guestbook-title {
   font-size: 16px;
   font-weight: 500;
@@ -20,10 +26,11 @@
 .entry-card {
   background: white;
   border-radius: 12px;
-  box-shadow: 0 6px 6px rgba(0,0,0,0.08);
+  box-shadow: 0 6px 6px rgba(0, 0, 0, 0.08);
   padding: 14px;
   margin-bottom: 12px;
   text-align: left;
+  position: relative;
 }
 
 .entry-name {
@@ -42,7 +49,9 @@
   color: #999;
 }
 
-.write-button, .more-button {
+.write-button,
+.more-button,
+.primary-button {
   background-color: #4a4a4a;
   color: white;
   border: none;
@@ -53,11 +62,24 @@
   cursor: pointer;
 }
 
+.secondary-button {
+  background: white;
+  color: #4a4a4a;
+  border: 1px solid #4a4a4a;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  margin: 6px;
+  cursor: pointer;
+}
+
 .modal-overlay {
   position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.4);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.15); /* ✅ 밝게 조정 */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -71,7 +93,7 @@
   max-width: 310px;
   padding: 20px;
   position: relative;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1); /* ✅ 더 부드럽게 */
 }
 
 .scroll-modal {
@@ -106,19 +128,27 @@
 
 .modal input,
 .modal textarea {
-  width: 100%;
-  padding: 8px;
+  width: 90%;
+  padding: 10px;
   font-size: 14px;
-  border: none;
-  border-bottom: 1px solid #ccc;
+  border-radius: 6px;
+  border: 1px solid #ddd; /* ✅ 깔끔한 테두리 */
   outline: none;
   resize: none;
-  font-family: 'Pretendard', sans-serif; /* 성함 입력 스타일 통일 */
-  font-weight: 400;                    /* 성함 입력 스타일 통일 */
-  color: #000;                        /* 필요하면 글자색도 맞춰줌 */
-  background-color: transparent;      /* 깔끔한 배경 유지 */
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 400;
+  color: #000;
+  background-color: #f9f9f9; /* ✅ 배경 추가 */
+  margin-top: 4px;
 }
 
+input::placeholder,
+textarea::placeholder {
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 400;
+  color: #888;
+  font-size: 14px;
+}
 
 .submit-button {
   background-color: #4a4a4a;
@@ -132,42 +162,6 @@
   cursor: pointer;
 }
 
-input::placeholder,
-textarea::placeholder {
-  font-family: 'Pretendard', sans-serif;
-  font-weight: 400;
-  color: #888;
-  font-size: 14px;
-}
-
-.guestbook-header {
-  font-size: 16px;
-  font-weight: 400;
-  margin-bottom: 8px;
-}
-
-.primary-button {
-  background-color: #4a4a4a;
-  color: white;
-  border: none;
-  padding: 10px 16px;
-  border-radius: 8px;
-  font-size: 14px;
-  margin: 2px;
-  cursor: pointer;
-}
-
-.secondary-button {
-  background: white;
-  color: #4a4a4a;
-  border: 1px solid #4a4a4a;
-  padding: 10px 16px;
-  border-radius: 8px;
-  font-size: 14px;
-  margin: 6px;
-  cursor: pointer;
-}
-
 .entry-delete-button {
   position: absolute;
   top: 10px;
@@ -177,8 +171,4 @@ textarea::placeholder {
   font-size: 16px;
   color: #888;
   cursor: pointer;
-}
-
-.entry-card {
-  position: relative;
 }
